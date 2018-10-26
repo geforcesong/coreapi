@@ -21,7 +21,8 @@ namespace coreapi.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            var ret = string.Format("value, id:{0}", id);
+            return ret;
         }
 
         // POST api/values
