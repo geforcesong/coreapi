@@ -23,6 +23,6 @@ WORKDIR /usr/src/app
 
 COPY ./bin/Release/netcoreapp2.1/publish/. /usr/src/app
 
-EXPOSE 5000
+EXPOSE 5656
 
-CMD dotnet coreapi.dll --server.urls http://0.0.0.0:5000
+CMD dotnet coreapi.dll
