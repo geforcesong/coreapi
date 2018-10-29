@@ -3,6 +3,6 @@ namespace coreapi.Models.Settings
 {
     public class ServerSettings
     {
-        public int Port { get; set; }
+        public string Url { get; set; }
     }
 }

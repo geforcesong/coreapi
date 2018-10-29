@@ -28,10 +28,12 @@ namespace coreapi
         public static IWebHostBuilder CreateWebHostBuilder(string[] args, ServerSettings serverSettings)
         {
             return WebHost.CreateDefaultBuilder(args)
-                   .UseStartup<Startup>().UseKestrel(options =>
-                   {
-                       options.Listen(System.Net.IPAddress.Loopback, serverSettings.Port);
-                   });
+                          .UseUrls(serverSettings.Url)
+                    .UseStartup<Startup>();
+                   //       .UseKestrel(options =>
+                   //{
+                   //    options.Listen(System.Net.IPAddress.Loopback, serverSettings.Port);
+                   //});
         }
     }
 }
