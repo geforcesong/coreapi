@@ -20,9 +20,12 @@ namespace coreapi
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
+            string envName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false).Build();
+                .AddJsonFile("appsettings.json", optional: false)
+                .AddJsonFile($"appsettings.{envName}.json", optional: true)
+                .Build();
             return WebHost.CreateDefaultBuilder(args)
                           .UseConfiguration(config)
                           //.ConfigureLogging((hostingContext, logging) =>
