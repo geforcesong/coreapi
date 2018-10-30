@@ -59,6 +59,9 @@ namespace coreapi.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]Property property)
         {
+            if(!ModelState.IsValid){
+                return StatusCode(StatusCodes.Status400BadRequest, "invalid input");
+            }
             var p = _properties.Find(c => c.ID == id);
             if (p == null)
             {
