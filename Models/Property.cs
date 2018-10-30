@@ -5,7 +5,6 @@ namespace coreapi.Models
 {
     public class Property
     {
-        [Required]
         public int ID { get; set; }
         public int MlsDb { get; set; }
         [Required]
