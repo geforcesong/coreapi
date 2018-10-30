@@ -15,25 +15,24 @@ namespace coreapi
     {
         public static void Main(string[] args)
         {
+            CreateWebHostBuilder(args).Build().Run();
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false).Build();
-
-            ServerSettings serverSettings = new ServerSettings();
-            config.GetSection("Server").Bind(serverSettings);
-
-            CreateWebHostBuilder(args, serverSettings).Build().Run();
-        }
-
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args, ServerSettings serverSettings)
-        {
             return WebHost.CreateDefaultBuilder(args)
-                          .UseUrls(serverSettings.Url)
-                    .UseStartup<Startup>();
-                   //       .UseKestrel(options =>
-                   //{
-                   //    options.Listen(System.Net.IPAddress.Loopback, serverSettings.Port);
-                   //});
+                          .UseConfiguration(config)
+                          //.ConfigureLogging((hostingContext, logging) =>
+                          //{
+                          //    logging.AddConfiguration(config.GetSection("Logging"));
+                          //    logging.AddConsole();
+                          //    logging.AddDebug();
+                          //    logging.AddEventSourceLogger();
+                          //})
+                          .UseStartup<Startup>();
         }
     }
 }
