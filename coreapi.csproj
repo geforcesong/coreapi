@@ -20,12 +20,6 @@
     <Compile Remove="Dockerfile" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="loggingfun.log" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Dockerfile" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
