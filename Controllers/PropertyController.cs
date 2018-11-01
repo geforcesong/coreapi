@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using coreapi.Models;
+using log4net;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,6 +15,7 @@ namespace coreapi.Controllers
     public class PropertyController : BaseController
     {
         static List<Property> _properties = new List<Property>();
+        private ILog log = LogManager.GetLogger(Startup.repository.Name, typeof(PropertyController));
 
         static PropertyController(){
             _properties.Add(new Property()
@@ -30,6 +32,8 @@ namespace coreapi.Controllers
         [Route("/api/properties")]
         public IEnumerable<Property> Get()
         {
+            log.Info("index view");
+            log.Error("Controller Error");
             return _properties;
         }
 

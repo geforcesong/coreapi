@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using coreapi.Models.Settings;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using log4net;
+using log4net.Config;
+using System.Reflection;
 
 namespace coreapi
 {
@@ -28,13 +27,6 @@ namespace coreapi
                 .Build();
             return WebHost.CreateDefaultBuilder(args)
                           .UseConfiguration(config)
-                          //.ConfigureLogging((hostingContext, logging) =>
-                          //{
-                          //    logging.AddConfiguration(config.GetSection("Logging"));
-                          //    logging.AddConsole();
-                          //    logging.AddDebug();
-                          //    logging.AddEventSourceLogger();
-                          //})
                           .UseStartup<Startup>();
         }
     }
