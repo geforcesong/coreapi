@@ -16,7 +16,7 @@ RUN curl -SL --output aspnetcore.tar.gz https://dotnetcli.blob.core.windows.net/
     && rm aspnetcore.tar.gz \
     && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
-
+ENV ASPNETCORE_URLS=http://+:5656
 RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
